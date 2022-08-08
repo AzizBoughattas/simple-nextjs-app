@@ -6,7 +6,6 @@ import Head from 'next/head'
 const MeetupDetails = (props) => {
   return (
     <Fragment>
-      {" "}
       <Head>
         <title>{props.meetupData.title}</title>
         <meta
@@ -37,7 +36,7 @@ export async function getStaticPaths() {
   client.close();
 
   return {
-    fallback: false,
+    fallback: 'blocking',
     paths: meetups.map((meetup) => ({
       params: { meetupId: meetup._id.toString() },
     })),
